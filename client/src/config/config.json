@@ -1,6 +1,6 @@
 {
-  "beaconType": "networkBeacon",
-  "apiUrl": "https://impact-beacon-network-backend-demo.ega-archive.org/beacon-network/v2.0.0",
+  "beaconType": "singleBeacon",
+  "apiUrl": "https://beacon-af-spain-demo.ega-archive.org/api",
   "assemblyId": ["GRCh38", "GRCh37", "NCBI36"],
   "variationType": [
     { "jsonName": "SNP", "displayName": "SNP" },
@@ -12,7 +12,7 @@
     { "jsonName": "BND", "displayName": "BND" }
   ],
   "ui": {
-    "title": "EGA Beacon Browser",
+    "title": "Template UI 1.0.0 Demo: Single Beacon",
     "favicon": "/assets/logos/favicon.ico",
     "colors": {
       "primary": "#3176B1",

@@ -11,7 +11,7 @@ import config from "./config/config.json";
 import { useState, useEffect } from "react";
 import LoginModal from "./components/common/LoginModal";
 import { logosHelper } from "./lib/logosHelper";
-
+import FeedbackWidget from "./components/FeedbackWidget";
 import {
   BrowserRouter as Router,
   Routes,
@@ -140,6 +140,7 @@ export default function App() {
             onClose={() => setLoginModalOpen(false)}
           />
         </Box>
+        <FeedbackWidget />
       </Router>
     </SelectedEntryProvider>
   );
