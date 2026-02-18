@@ -5,12 +5,11 @@ import {
   IconButton,
   Typography,
   TextField,
+  Tooltip,
   Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Rating from "@mui/material/Rating";
 import config from "../config/config.json";
 
@@ -20,7 +19,6 @@ const TITLE_SIZE = "14px";
 
 export default function FeedbackWidget() {
   const [open, setOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
   const [rating, setRating] = useState(null);
   const [comment, setComment] = useState("");
   const [status, setStatus] = useState("idle");
@@ -61,7 +59,6 @@ export default function FeedbackWidget() {
       setStatus("sent");
       setRating(null);
       setComment("");
-      setCollapsed(true);
     } catch {
       setStatus("error");
     }
@@ -96,8 +93,8 @@ export default function FeedbackWidget() {
         position: "fixed",
         bottom: 20,
         right: 20,
-        width: collapsed ? 220 : 320,
-        p: collapsed ? 1 : 2,
+        width: 320,
+        p: 2,
         zIndex: 1300,
         fontFamily: FONT,
         "& *": { fontFamily: FONT },
@@ -105,88 +102,132 @@ export default function FeedbackWidget() {
     >
       {/* Header */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography sx={{ fontSize: TITLE_SIZE, fontWeight: 600 }}>
-          Feedback
-        </Typography>
+        <Box display="flex" alignItems="center">
+          <Typography sx={{ fontSize: TITLE_SIZE, fontWeight: 600 }}>
+            Feedback
+          </Typography>
 
-        <Box>
-          <IconButton size="medium" onClick={() => setCollapsed(!collapsed)}>
-            {collapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-          </IconButton>
-
-          <IconButton size="small" onClick={() => setOpen(false)}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      </Box>
-
-      {!collapsed && (
-        <>
-          <Box mt={1}>
-            <Typography sx={{ fontSize: TEXT_SIZE }}>
-              How was your experience?
-            </Typography>
-
-            <Rating
-              value={rating}
-              onChange={(e, newValue) => setRating(newValue)}
-              sx={{ color: config.ui.colors.primary }}
-            />
-          </Box>
-
-          <TextField
-            fullWidth
-            multiline
-            minRows={3}
-            size="small"
-            placeholder="Tell us your feedback"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            sx={{
-              mt: 1,
-              "& .MuiInputBase-input": {
-                fontFamily: FONT,
-                fontSize: TEXT_SIZE,
-                lineHeight: 1.4,
+          <Tooltip
+            title={
+              <Box
+                sx={{
+                  fontFamily: '"Open Sans", sans-serif',
+                  fontSize: "12px",
+                  lineHeight: 1.4,
+                }}
+              >
+                Beacon Template UI is a work in progress.
+                <br />
+                Share what you liked or what could be improved. <br />
+                You can submit anonymously, or include your name and email if
+                you'd like to stay in touch.
+              </Box>
+            }
+            placement="top"
+            arrow
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  border: "1px solid black",
+                  minWidth: "120px",
+                },
               },
-              "& .MuiInputBase-root": {
-                fontFamily: FONT,
+              arrow: {
+                sx: {
+                  color: "#fff",
+                  "&::before": { border: "1px solid black" },
+                },
               },
-            }}
-          />
-
-          <Button
-            variant="contained"
-            fullWidth
-            disabled={status === "sending" || (!rating && !comment.trim())}
-            onClick={sendFeedback}
-            sx={{
-              mt: 1,
-              fontSize: TEXT_SIZE,
-              textTransform: "none",
-              bgcolor: config.ui.colors.primary,
-              "&:hover": { bgcolor: config.ui.colors.darkPrimary },
             }}
           >
-            Send
-          </Button>
+            <Box
+              component="span"
+              sx={{
+                cursor: "pointer",
+                ml: 1,
+                width: "18px",
+                height: "18px",
+                borderRadius: "50%",
+                backgroundColor: "grey",
+                color: "white",
+                textAlign: "center",
+                fontSize: "12px",
+                lineHeight: "18px",
+                fontWeight: 600,
+              }}
+            >
+              i
+            </Box>
+          </Tooltip>
+        </Box>
 
-          {status === "sending" && (
-            <Typography sx={{ fontSize: "12px", mt: 1 }}>Sending...</Typography>
-          )}
+        <IconButton size="small" onClick={() => setOpen(false)}>
+          <CloseIcon />
+        </IconButton>
+      </Box>
 
-          {status === "sent" && (
-            <Typography sx={{ fontSize: "12px", mt: 1, color: "success.main" }}>
-              Feedback sent ✓
-            </Typography>
-          )}
+      <Box mt={1}>
+        <Typography sx={{ fontSize: TEXT_SIZE }}>
+          How was your experience?
+        </Typography>
 
-          {status === "error" && (
-            <Typography sx={{ fontSize: "12px", mt: 1, color: "error.main" }}>
-              Could not send feedback
-            </Typography>
-          )}
-        </>
+        <Rating
+          value={rating}
+          onChange={(e, newValue) => setRating(newValue)}
+          sx={{ color: config.ui.colors.primary }}
+        />
+      </Box>
+
+      <TextField
+        fullWidth
+        multiline
+        minRows={3}
+        size="small"
+        placeholder="Tell us your feedback"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+        sx={{
+          mt: 1,
+          "& .MuiInputBase-input": {
+            fontFamily: FONT,
+            fontSize: TEXT_SIZE,
+            lineHeight: 1.4,
+          },
+        }}
+      />
+
+      <Button
+        variant="contained"
+        fullWidth
+        disabled={status === "sending" || (!rating && !comment.trim())}
+        onClick={sendFeedback}
+        sx={{
+          mt: 1,
+          fontSize: TEXT_SIZE,
+          textTransform: "none",
+          bgcolor: config.ui.colors.primary,
+          "&:hover": { bgcolor: config.ui.colors.darkPrimary },
+        }}
+      >
+        Send
+      </Button>
+
+      {status === "sending" && (
+        <Typography sx={{ fontSize: "12px", mt: 1 }}>Sending...</Typography>
+      )}
+
+      {status === "sent" && (
+        <Typography sx={{ fontSize: "12px", mt: 1, color: "success.main" }}>
+          Feedback sent ✓
+        </Typography>
+      )}
+
+      {status === "error" && (
+        <Typography sx={{ fontSize: "12px", mt: 1, color: "error.main" }}>
+          Could not send feedback
+        </Typography>
       )}
     </Paper>
   );

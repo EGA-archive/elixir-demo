@@ -40,7 +40,7 @@ app.post("/api/feedback", async (req, res) => {
       from: `"Beacon UI Feedback" <${process.env.FEEDBACK_SMTP_USER}>`,
       to: process.env.FEEDBACK_TO_EMAIL,
       subject: `Beacon Feedback (${safeRating ?? "no rating"}/5)`,
-      text: `Anonymous feedback received
+      text: `New feedback submitted via Beacon Template UI demo
 
 Rating: ${safeRating ?? "not provided"}/5
 
