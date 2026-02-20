@@ -17,7 +17,9 @@ import bsc from "../assets/logos/bsc.svg";
  */
 export default function Footer() {
   const auth = useAuth();
-  const isLoggedIn = !!auth?.userData; // True if user is logged in
+
+  const isLoggedIn = !!auth?.userData;
+  // True if user is logged in
   const loginEnabled = isLoginEnabled();
 
   // Function to log the user out

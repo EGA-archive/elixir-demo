@@ -25,6 +25,8 @@ export default function HomePage({
   const [searchHeight, setSearchHeight] = useState(null);
   const [hasModalBeenTriggered, setHasModalBeenTriggered] = useState(false);
   const auth = useAuth();
+  const isDemoMode = config?.ui?.demoMode === true;
+
   const isLoggedIn = !!auth?.userData;
   const location = useLocation();
   const isOnLoginPage = location.pathname === "/login";

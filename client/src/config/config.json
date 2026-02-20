@@ -58,7 +58,9 @@
       ]
     },
 
-    "showLogin": false,
+    "showLogin": true,
+    "disableLogin": true,
+    "demoMode": true,
     "auth": {
       "providerType": "private",
       "oidc": {
