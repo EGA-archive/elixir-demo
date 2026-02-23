@@ -416,14 +416,6 @@ export default function GenomicQueryBuilderDialog({
           }}
         >
           {({ resetForm, isValid, dirty, values, errors }) => {
-            console.log("[GQB DEBUG]", {
-              selectedQueryType,
-              isValid,
-              dirty,
-              values,
-              initialValues,
-            });
-
             return (
               <Form>
                 {/* Render the selectable query type buttons */}
