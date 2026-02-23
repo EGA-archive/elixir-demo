@@ -37,10 +37,10 @@ app.post("/api/feedback", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `"Beacon UI Feedback" <${process.env.FEEDBACK_SMTP_USER}>`,
+      from: `"ELIXIR Beacon Network Browser UI Feedback" <${process.env.FEEDBACK_SMTP_USER}>`,
       to: process.env.FEEDBACK_TO_EMAIL,
       subject: `Beacon Feedback (${safeRating ?? "no rating"}/5)`,
-      text: `New feedback submitted via Beacon Template UI demo
+      text: `New feedback submitted via ELIXIR Beacon Network Browser
 
 Rating: ${safeRating ?? "not provided"}/5
 

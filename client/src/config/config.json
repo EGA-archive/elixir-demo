@@ -24,7 +24,9 @@
       "founders": [
         "/assets/logos/founder1.svg",
         "/assets/logos/founder2.svg",
-        "/assets/logos/founder3.svg"
+        "/assets/logos/founder3.svg",
+        "/assets/logos/founder4.svg",
+        "/assets/logos/founder5.svg"
       ]
     },
     "showExternalNavBarLink": false,
