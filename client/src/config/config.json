@@ -44,7 +44,7 @@
         "/assets/logos/about3.svg"
       ],
       "descriptions": [
-        "<b>ELIXIR</b> is a European life sciences infrastructure that brings together and coordinates various types of scientific resources helping researchers to access, analyse and share life science data, and promote the exchange of expertise. The European countries that are members of ELIXIR form a “Node”, which is a network of research organisations that work within that member state. <br/> In the light of the large amounts of complex data generated in life sciences, data findability and reusability are of pivotal importance, while aligning with FAIR data principles. To this end, ELIXIR has collaborated with the <b>Global Alliance for Genomics and Health (GA4GH)</b> to drive the implementation of <b>Beacon technology</b> across ELIXIR Nodes. The Beacon v2 protocol, which has been adopted as a GA4GH standard, is a simple data discovery tool that allows researchers to search genomic and biomedical data worldwide without compromising confidentiality or ownership of the datasets. The individual Beacon instances are then aggregated into the ELIXIR Beacon Network as part of the ELIXIR infrastructure service to facilitate and encourage data sharing by the Nodes."
+        "The ELIXIR Beacon Network (EBN) is a federated discovery platform that allows users to query distributed biomedical datasets (such as genomic and phenotypic data) through the GA4GH Beacon v2 protocol. Rather than centralising data, the service queries participating Beacons real time and returns aggregated results while preserving local data sovereignty. EBN brings value by facilitating standardized, privacy-preserving data discovery in a federated manner. It supports a seamless integration of Node-operated Beacon servers and establishes a unified search layer for European biomedical data infrastructures. Developed under ELIXIR, the network creates an interconnected ecosystem of beacons, fostering responsible sharing of genomic, phenotypic and other data types. <br/> The onboarding of new Beacons is regulated by standardized governance and validation procedures. The service includes Beacon registration, validation and monitoring, public web interface and API for federated search and governance structure for decision-making. As EBN serves purely as a data discovery service, it does not entail storage of raw or individual-level data, data access management nor brokering, and neither bioinformatic analysis or compute services."
       ],
       "fundingOrgs": [
         {
@@ -85,11 +85,7 @@
     ],
 
     "commonFilters": {
-      "filterCategories": [
-        "Demographics",
-        "Metabolic Diseases",
-        "Mental Diseases"
-      ],
+      "filterCategories": ["Demographics"],
       "filterLabels": {
         "Demographics": [
           {
@@ -120,66 +116,6 @@
             "label": "Asian",
             "type": "ontologyTerm",
             "scopes": ["individual", "biosample"]
-          }
-        ],
-        "Metabolic Diseases": [
-          {
-            "key": "obesity",
-            "label": "obesity",
-            "id": "ICD10:E66",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "gastro-oesophageal reflux disease",
-            "label": "gastro-oesophageal reflux disease",
-            "id": "ICD10:K21",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "insulin-dependent diabetes mellitus",
-            "label": "insulin-dependent diabetes mellitus",
-            "id": "ICD10:E10",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "thyroiditis",
-            "label": "thyroiditis",
-            "id": "ICD10:E06",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "iron deficiency anaemia",
-            "label": "iron deficiency anaemia",
-            "id": "ICD10:D50",
-            "type": "ontology",
-            "scopes": ["individual"]
-          }
-        ],
-        "Mental Diseases": [
-          {
-            "key": "schizophrenia",
-            "label": "schizophrenia",
-            "id": "ICD10:F20",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "eating disorders",
-            "label": "eating disorders",
-            "id": "ICD10:F50",
-            "type": "ontology",
-            "scopes": ["individual"]
-          },
-          {
-            "key": "bipolar affective disorder",
-            "label": "bipolar affective disorder",
-            "id": "ICD10:F3181",
-            "type": "ontology",
-            "scopes": ["individual"]
           }
         ]
       }

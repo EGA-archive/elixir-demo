@@ -3,12 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const path = require("path");
 
 const app = express();
 
+app.disable("x-powered-by");
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || true,
     methods: ["POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
   })
@@ -29,9 +31,9 @@ app.post("/api/feedback", async (req, res) => {
   const comment = String(req.body?.comment || "").trim();
 
   const safeRating = Number.isFinite(rating) ? rating : null;
-  const safeComment = comment.slice(0, 2000); // avoid massive payloads
+  const safeComment = comment.slice(0, 2000);
 
-  if (!safeRating && !safeComment) {
+  if (safeRating === null && !safeComment) {
     return res.status(400).json({ ok: false, error: "Empty feedback" });
   }
 
@@ -51,11 +53,21 @@ ${safeComment || "not provided"}
 
     return res.json({ ok: true });
   } catch (err) {
+    console.error("Feedback email error:", err);
     return res.status(500).json({ ok: false });
   }
 });
 
+const clientBuildPath = path.join(__dirname, "../../client/build");
+
+app.use(express.static(clientBuildPath));
+
+app.use((req, res) => {
+  res.sendFile(path.join(clientBuildPath, "index.html"));
+});
+
 const port = Number(process.env.PORT || 4010);
+
 app.listen(port, () => {
-  console.log(`Feedback mail relay listening on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
