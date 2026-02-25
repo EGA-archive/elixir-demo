@@ -2,3 +2,4 @@ node_modules
 api.json
 .env
 feedback-mail-relay/.env
+feedback.txt
