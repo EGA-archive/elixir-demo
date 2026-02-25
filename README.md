@@ -1,4 +1,4 @@
-# Beacon Template UI
+# ELIXIR Beacon Network Browser (Beacon Template UI)
 
 Welcome to the new template UI for Beacon v2 instances. Please, follow the [official documentation website](https://beacon-documentation-demo.ega-archive.org/ui-introduction) for detailed aspects on how the Beacon template UI works.
 
@@ -6,7 +6,7 @@ Welcome to the new template UI for Beacon v2 instances. Please, follow the [offi
 
 1. Prerequisites
 
-* Docker
+- Docker
 
 Make sure Docker and Docker Compose are installed on your machine.
 You can verify this by opening up the terminal on your computer and input the following:
@@ -17,17 +17,18 @@ docker compose version
 ```
 
 You should expect both commands printing a version, for example:
+
 ```bash
 Docker version 27.3.1, build ce12230
 Docker Compose version v2.29.7-desktop.1
 ```
 
-* Code Editor
+- Code Editor
 
 You will need a code editor (e.g. Visual Studio Code) to:
 
-* Edit the config.json
-* Create and edit your.env file (if login is enabled)
+- Edit the config.json
+- Create and edit your.env file (if login is enabled)
 
 2. Clone the repository
 
@@ -56,13 +57,13 @@ This means you’re in the correct directory and ready to start editing the conf
 There is an extended section that you will find by navigating to the Configuration File paragraph.
 Before proceeding make sure that the following files are edited:
 
-*  config.json (location: client/src/config/config.json)
-*  client/public/assets/logos is populated with the correct .svg(s)
-    Remember that you can also use relative URLs if your images are hosted externally.
+- config.json (location: client/src/config/config.json)
+- client/public/assets/logos is populated with the correct .svg(s)
+  Remember that you can also use relative URLs if your images are hosted externally.
 
 Only if the login is enabled:
 
-* .env file is added in client folder with the credentials
+- .env file is added in client folder with the credentials
 
 4. Start the application with Docker
 
@@ -84,7 +85,6 @@ docker ps
 
 Expected output:
 
-
 CONTAINER ID IMAGE COMMAND STATUS PORTS 123abc456def beacon-template-ui-client:latest "node /opt/yarn..." Up 10 seconds 0.0.0.0:3025->3000/tcp
 
 If it’s visible, the UI is running locally at: http://localhost:3000
@@ -103,8 +103,6 @@ To rebuild and restart after modifying files:
 docker compose up -d --build
 ```
 
-
-
 ## Updating to a new Beacon Template UI Version
 
 The configuration file (client/src/config/config.json) is designed to be reusable across Beacon Template UI releases.
@@ -113,17 +111,16 @@ To update to a newer version:
 
 1. Keep your existing configuration files
 
-    * client/src/config/config.json
-    * client/.env (if login is enabled)
+   - client/src/config/config.json
+   - client/.env (if login is enabled)
 
 2. Update the Template UI code
-    
 
-    * Either pull the latest changes from the repository (for example with git fetch/git pull), or clone the new version and copy your existing config.json and.env into it.
+   - Either pull the latest changes from the repository (for example with git fetch/git pull), or clone the new version and copy your existing config.json and.env into it.
 
 3. Rebuild and restart the UI
 
-    * Run:
+   - Run:
 
 ```bash
 docker compose down
